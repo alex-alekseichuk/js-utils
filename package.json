@@ -5,8 +5,7 @@
   "main": "utils.js",
   "type": "module",
   "scripts": {
-    "script": "node --es-module-specifier-resolution=node --experimental-modules",
-    "test": "npm run script -- node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules -- node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
