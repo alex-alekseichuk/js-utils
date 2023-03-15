@@ -1,0 +1,25 @@
+{
+  "name": "js-utils",
+  "version": "1.0.0",
+  "description": "A set of JavaScript utility functions as alternative to lodash.",
+  "main": "utils.js",
+  "type": "module",
+  "scripts": {
+    "script": "node --es-module-specifier-resolution=node --experimental-modules",
+    "test": "npm run script -- node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-alekseichuk/js-utils.git"
+  },
+  "keywords": [],
+  "author": "Alex Alekseichuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-alekseichuk/js-utils/issues"
+  },
+  "homepage": "https://github.com/alex-alekseichuk/js-utils#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}

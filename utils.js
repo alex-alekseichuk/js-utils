@@ -117,7 +117,7 @@ function zip(...arrays) {
   });
 }
 
-function groupN(items, n) {
+export function groupN(items, n) {
   const count = Math.ceil(items.length / n);
   const groups = Array(count);
   for (let index = 0; index < count; index++) {
