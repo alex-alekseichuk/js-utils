@@ -39,15 +39,32 @@ function once(func) {
   };
 }
 
-function memoize(func) {
+/**
+ * Cache function result
+ * @param func
+ * @param getKey optional function to provide custom key; default is by the args
+ * @param ttl optional TTL in milliseconds for the key-values; default is w/o expiration
+ * @returns wrapper to be used instead of function
+ */
+function memoize(func, getKey, ttl) {
   const cache = new Map();
   return function() {
-    const key = JSON.stringify(arguments);
+    const key = getKey ? getKey.apply(this, arguments) : JSON.stringify(arguments);
     if (cache.has(key)) {
+      if (!ttl) {
         return cache.get(key);
+      }
+      const now = (new Date()).getTime();
+      const saved = cache.get(key);
+      if (saved) {
+        const [result, t] = saved;
+        if (now < t + ttl) {
+          return result;
+        }
+      }
     }
     const result = func.apply(this, arguments);
-    cache.set(key, result);
+    cache.set(key, ttl ? [result, (new Date()).getTime()] : result);
     return result;
   };
 }
@@ -125,3 +142,4 @@ export function groupN(items, n) {
   }
   return groups;
 }
+
