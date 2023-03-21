@@ -1,3 +1,7 @@
+export function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // A debounce function is a method for preventing a quick series of events from repeatedly activating a function.
 // It works by postponing function execution until a certain period has passed without the event being fired.
 function debounce(func, delay) {
@@ -142,4 +146,3 @@ export function groupN(items, n) {
   }
   return groups;
 }
-
